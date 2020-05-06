@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  AUTH_SERVER_BASE_URL: 'http://localhost:8081',
+  clientId: 'app',
+  clientSecret: 'pass'
 };
 
 /*

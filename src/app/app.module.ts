@@ -13,6 +13,10 @@ import { FriendState } from './shared/store/friend/friend.state';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './shared/auth/guard/auth.guard';
+import { AuthService } from './shared/auth/auth/auth.service';
+import { TokenInterceptorService } from './shared/auth/http-interceptor/tokken-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -29,9 +33,16 @@ import { MaterialModule } from './shared/material/material.module';
     AppRoutingModule,
     MemberModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [AuthGuard, AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   exports: [
     MaterialModule
