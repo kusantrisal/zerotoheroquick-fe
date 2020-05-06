@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../auth/http/http.service';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
+import { AuthService } from '../auth/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,11 @@ import { throwError } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  title = 'navbar-title';
   constructor(
     private http: HttpService,
-    private router: Router) { }
+    private router: Router,
+    public authService: AuthService) { }
 
   ngOnInit() {
   }
