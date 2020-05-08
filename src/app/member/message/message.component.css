@@ -1,0 +1,40 @@
+form {
+  width: 100%;
+  height: 100%;
+}
+
+form input {
+  width: 80%;
+  height: 50%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.speech-bubble {
+  position: relative;
+  background: #dddddd;
+  border-radius: 10px;
+  color: black;
+  min-width: 30%;
+  padding: 10px;
+  max-width: 80%;
+  margin-top: 5px;
+  /* border-right: 10px solid rgb(241, 127, 82); */
+}
+
+.speech-bubble-right {
+  position: relative;
+  background: #dddddd;
+  border-radius: 10px;
+  color: black;
+  min-width: 30%;
+  padding: 10px;
+  max-width: 80%;
+  margin-top: 5px;
+   border-left: 10px solid rgb(50, 187, 91); 
+}

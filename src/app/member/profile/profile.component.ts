@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Select,Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { SetMember } from 'src/app/shared/store/member/member.actions';
 import { PatchFriend } from 'src/app/shared/store/friend/friend.actions';
 @Component({
@@ -10,6 +10,7 @@ import { PatchFriend } from 'src/app/shared/store/friend/friend.actions';
 export class ProfileComponent implements OnInit {
   @Select() member$
   @Select() friends$
+  hideProfileFlag: boolean = true;
   constructor(private store: Store) { }
 
   ngOnInit() {
@@ -20,4 +21,10 @@ export class ProfileComponent implements OnInit {
     this.store.dispatch([new PatchFriend({ firstName: 'From', lastname: 'Profile' })]);
   }
 
+  openProfile() {
+    this.hideProfileFlag = true;
+  }
+  closeProfile() {
+    this.hideProfileFlag = false;
+  }
 }

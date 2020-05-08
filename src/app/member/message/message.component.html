@@ -1,0 +1,73 @@
+<div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!openConversationFlag">
+    <div style="width: 100%;">
+        <mat-list style="width: 100%;" (click)="openConversationSwitch()">
+            <mat-list-item *ngFor="let message of messages" style=" background-color: rgb(255, 255, 255);">
+                <img matListAvatar src="assets/images/profile-pic.jpg" alt="avatar">
+                <h3 matLine> {{message.from}} </h3>
+                <p matLine>
+                    <span> {{message.subject}} </span>
+                    <span class="demo-2"> -- {{message.content}} </span>
+                </p>
+                <h3 matSubheader>{{message.lastMessage | date: 'short'}}</h3>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>
+
+<div *ngIf="openConversationFlag" fxLayout="row wrap" fxLayoutAlign="start end" fxLayoutGap="20px"
+    style="background-color: rgb(255, 255, 255);">
+
+    <!-- top menu -->
+    <div>
+        <button mat-icon-button (click)="openConversationSwitch()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openConversationSwitch()">
+            <mat-icon>cloud</mat-icon>
+        </button>
+    </div>
+
+
+    <!-- messages -->
+    <div style="background-color: rgb(255, 255, 255); height: 65vh; overflow: scroll; overflow-x: hidden; overflow-y: auto;"
+        fxFlex="100" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+        <div *ngFor="let c of conversation" style=" margin: 10px;">
+
+            <div fxLayout="column" fxLayoutGap="20px" style="min-width: 100%;">
+                <div fxLayout="row" fxLayoutGap="25px">
+                    <!-- <img src="assets/images/profile-pic.jpg" alt="Avatar" class="avatar"> -->
+
+                    <div class="speech-bubble">
+                        <sup>Jeremy Li 12/04/1988</sup>
+                        <div style="line-height: normal;">This is a paragraph with a standard line-height.<br>
+                            The standard line height in most browsers is about 110% to 120%.</div>
+                        <p style="text-align:right">This is some text in a paragraph.</p>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="speech-bubble-right" style="float: right; position: relative; ">
+                <p>{{c}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--  typing stuff -->
+    <div style="background-color: rgb(255, 255, 255); height: 10vh; text-align: center; margin: 10px; " fxFlex>
+        <form>
+            <input type="text" placeholder="Start typing ..." name="messageInput" [(ngModel)]="messageInput"
+                style="padding: 10px; font-size: medium;">
+            <button mat-icon-button (click)=sendMessage()>
+                <mat-icon>send</mat-icon>
+            </button>
+        </form>
+
+    </div>
+</div>

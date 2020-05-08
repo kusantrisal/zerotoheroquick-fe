@@ -1,4 +1,61 @@
-<button mat-button (click)=dispatchSetMember()>Set</button>
+<div fxLayout="column" fxLayoutAlign="start stretch" >
+ 
+    <!-- profile top div -->
+    <div *ngIf="hideProfileFlag">
+
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between center" fxFill >
+
+            <!-- left side -->
+            <div class="profilePic" fxFlex="25%" fxFlex.lt-md="100%">
+                <img style="width: 100%;" src="assets/images/profile-pic.jpg" alt="profile pic">
+            </div>
+
+
+            <!-- right side -->
+            <div style="background-color: rgb(255, 255, 255); text-align: center; border-radius: 25px; width: 50%; "
+                fxFlex>
+                <h2>Jon Doe</h2>
+                <p>Some kinds of status</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <button mat-button color="primary" *ngIf="!hideProfileFlag" (click)="openProfile()">Show Profile</button>
+    <!-- profile buttom div -->
+    <div style="background-color: rgb(255, 255, 255);" fxFlex="75%">
+
+        <mat-tab-group mat-align-tabs="center"  (click)="closeProfile()">
+
+            <!-- Messages -->
+            <mat-tab label="Message">
+                <ng-template matTabContent>
+                    <app-message></app-message>
+                </ng-template>
+            </mat-tab>
+            <!-- Account -->
+            <mat-tab label="Account">Content 1</mat-tab>
+            <mat-tab label="Photo">Content 2</mat-tab>
+            <!-- Friends -->
+            <mat-tab label="Friends">Content 3</mat-tab>
+
+        </mat-tab-group>
+    </div>
+</div>
+
+
+
+
+
+<!-- <img [src]="imagePath" />
+is the same as:
+
+<img src={{imagePath}} /> -->
+
+
+<!-- <button mat-button (click)=dispatchSetMember()>Set</button>
 <p *ngIf="member$">
     {{ member$ | async | json }}
 </p>
@@ -7,4 +64,4 @@
     {{ friends$ | async | json }}
 </p>
 
-<button mat-button>Test</button>
+<button mat-button>Test</button> -->
