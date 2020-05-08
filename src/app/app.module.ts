@@ -17,11 +17,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './shared/auth/guard/auth.guard';
 import { AuthService } from './shared/auth/auth/auth.service';
 import { TokenInterceptorService } from './shared/auth/http-interceptor/tokken-interceptor.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,6 @@ import { TokenInterceptorService } from './shared/auth/http-interceptor/tokken-i
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-
   ],
   providers: [AuthGuard, AuthService,
     {

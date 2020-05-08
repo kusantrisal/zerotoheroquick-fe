@@ -1,15 +1,16 @@
 <mat-toolbar color="primary">
-  <button mat-button routerLink="/">
+  <button mat-button routerLink="">
     <mat-icon>home</mat-icon>
     <!-- {{title}} -->
   </button>
 
-  <button mat-button (click)="testApi()">Test</button>
+  <!-- <button mat-button  (click)="testApi()">Test</button> -->
   <span class="fill-remaining-space"></span>
 
   <div fxLayout="row" fxHide fxShow.gt-sm>
-    <button mat-button *ngIf="authService.isLoggedIn()" routerLink="/profile">Profile</button>
-    <button mat-button routerLink="/profile">LogIn</button>
+    <button mat-button *ngIf="authService.isLoggedIn()" routerLink="/profile">View Profile</button>
+    <button mat-button *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button>
+    <button mat-button *ngIf="authService.isLoggedIn()" (click)="logOut()">LogOut</button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxShow fxHide.gt-sm>
     <mat-icon>menu</mat-icon>
@@ -19,9 +20,12 @@
 
 <!-- If mobile mode -->
 <mat-menu x-position="before" #menu>
-  <button mat-menu-item routerLink="/profile" *ngIf="!authService.isLoggedIn()">Profile</button>
+  <button mat-menu-item *ngIf="authService.isLoggedIn()" routerLink="/profile">Profile</button>
+  <button mat-menu-item *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button>
+  <button mat-menu-item *ngIf="authService.isLoggedIn()" (click)="logOut()">LogOut</button>
 </mat-menu>
 
 
-<button mat-raised-button color="primary" (click)="signIn()">LogIn</button>
-<button mat-raised-button color="primary" (click)="logOut()">Logout</button>
+
+<!-- <button mat-raised-button color="primary" (click)="signIn()">LogIn</button>
+<button mat-raised-button color="primary" (click)="logOut()">Logout</button> -->

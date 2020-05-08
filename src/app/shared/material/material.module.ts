@@ -23,7 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-
+import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const material = [
@@ -51,7 +51,8 @@ const material = [
   MatMenuModule,
   MatBadgeModule,
   MatBottomSheetModule,
-  MatProgressBarModule];
+  MatProgressBarModule,
+  FormsModule];
 @NgModule({
   imports: [material],
   exports: [material]
