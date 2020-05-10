@@ -19,12 +19,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PickerModule } from '@ctrl/ngx-emoji-mart'
+import { ReactiveFormsModule } from '@angular/forms';
 
 const material = [
   FlexLayoutModule,
@@ -52,7 +54,9 @@ const material = [
   MatBadgeModule,
   MatBottomSheetModule,
   MatProgressBarModule,
-  FormsModule];
+  FormsModule,
+  ReactiveFormsModule,
+  PickerModule];
 @NgModule({
   imports: [material],
   exports: [material]
