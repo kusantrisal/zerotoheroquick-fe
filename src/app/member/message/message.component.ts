@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SocketService } from 'src/app/shared/socket/socket.service';
 
 export interface message {
   from: string;
@@ -21,12 +22,14 @@ export class MessageComponent implements OnInit, AfterViewChecked {
   openConversationFlag: boolean = false;
   conversation: string[] = [];
   messageInput;
+  socketId: string = '';
   searchForm = this.fb.group({
     searchName: [null, Validators.required]
   });
 
   constructor(
     private fb: FormBuilder,
+    private socketService: SocketService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +62,8 @@ export class MessageComponent implements OnInit, AfterViewChecked {
 
   sendMessage() {
     this.conversation.push(this.messageInput);
+    this.socketService.sendMessage({socketId: this.socketId, body: this.messageInput});
+    this.messageInput = '';
   }
 
   search() {

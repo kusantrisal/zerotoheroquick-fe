@@ -68,8 +68,7 @@
 
           <div class="speech-bubble">
             <sup>Jeremy Li 12/04/1988</sup>
-            <div style="line-height: normal;">This is a paragraph with a standard line-height.<br>
-              The standard line height in most browsers is about 110% to 120%.</div>
+            <div style="line-height: normal;">{{c}}.</div>
             <!-- <p style="text-align:right">12/04/1988</p> -->
           </div>
 
@@ -93,6 +92,8 @@
   <!--  typing stuff -->
   <div class="typingArea" style="background-color: rgb(255, 255, 255); height: 10vh; text-align: center; ; ">
     <form>
+      <input type="text" placeholder="Socket Id ..." name="socketId" [(ngModel)]="socketId"
+      style="padding: 10px; font-size: medium;">
       <input type="text" placeholder="Start typing ..." name="messageInput" [(ngModel)]="messageInput"
         style="padding: 10px; font-size: medium;">
       <button mat-icon-button (click)=sendMessage()>

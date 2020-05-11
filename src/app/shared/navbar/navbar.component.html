@@ -9,10 +9,10 @@
 
   <div fxLayout="row" fxHide fxShow.gt-sm>
     <button mat-button *ngIf="authService.isLoggedIn()" routerLink="/profile">View Profile</button>
-    <button mat-button *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button>
+    <!-- <button mat-button *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button> -->
     <button mat-button *ngIf="authService.isLoggedIn()" (click)="logOut()">LogOut</button>
   </div>
-  <button mat-button [mat-menu-trigger-for]="menu" fxShow fxHide.gt-sm>
+  <button mat-button [mat-menu-trigger-for]="menu" fxShow fxHide.gt-sm *ngIf="authService.isLoggedIn()">
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -21,7 +21,7 @@
 <!-- If mobile mode -->
 <mat-menu x-position="before" #menu>
   <button mat-menu-item *ngIf="authService.isLoggedIn()" routerLink="/profile">Profile</button>
-  <button mat-menu-item *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button>
+  <!-- <button mat-menu-item *ngIf="!authService.isLoggedIn()" (click)="signIn()">LogIn</button> -->
   <button mat-menu-item *ngIf="authService.isLoggedIn()" (click)="logOut()">LogOut</button>
 </mat-menu>
 

@@ -1,1 +1,82 @@
-<p>home works!</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5px" fxFill>
+
+    <div fxLayout="row" fxLayoutAlign="space-around center" style="background-color: #212121; color: white;"
+        fxFlex="70">
+        <section class="mat-typography">
+            <h1>Future is here</h1>
+        </section>
+    </div>
+
+    <!-- login form -->
+    <div style="background-color: rgb(255, 255, 255);" fxLayout="row" fxLayoutAlign="space-around center" fxFlex
+        *ngIf="!authService.isLoggedIn(); else templateName">
+
+        <form fxLayout="column center" [formGroup]="loginForm" (ngSubmit)="signIn()" style="margin: 10px;">
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" />
+            </mat-form-field>
+
+            <button mat-raised-button color="primary">Sign In</button>
+
+            <div fxLayoutAlign="center center" layout="column">
+                <div style="text-align: center; padding-top: 1rem;">
+                    By clicking Sign In, you agree to our Terms and have read and
+                    acknowledge our US Privacy Statement.
+                </div>
+            </div>
+
+            <div style="padding-top: 1rem;">
+                <mat-checkbox style="float: left;">Remember Me</mat-checkbox>
+                <a style="float: right;" routerLink="/signup">Forgot your user ID or password</a>
+            </div>
+
+        </form>
+    </div>
+
+    <ng-template #templateName>
+        <div style="background-color: rgb(255, 255, 255);" fxLayout="column" fxLayoutAlign="start stretch" fxFlex>
+            <div>
+                <form fxLayout="column center" [formGroup]="searchForm" (ngSubmit)="search()" style=" width: 100%;">
+                    <mat-form-field>
+                        <mat-label>Search</mat-label>
+                        <input matInput formControlName="search" />
+                    </mat-form-field>
+
+                    <button hidden>search</button>
+                </form>
+            </div>
+
+            <div>
+                <mat-list>
+                    <mat-list-item *ngFor="let result of searchResult">
+
+                        <img matListAvatar
+                            src="https://{{result.profilePic.bucket}}.s3.amazonaws.com/{{result.profilePic.key}}"
+                            alt="...">
+                        <h3 matLine> {{result.firstName}} {{result.lastName}} </h3>
+                        <p matLine>
+                            <span> {{result.memberUuid}} </span>
+                       <!--  <span class="demo-2"> -- {{message.content}} </span> -->
+                        </p>
+                        <button mat-icon-button (click)="sendFriendRequest(result.memberUuid)">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="search()">
+                            <mat-icon>message</mat-icon>
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+
+
+            </div>
+
+        </div>
+    </ng-template>
+
+</div>
